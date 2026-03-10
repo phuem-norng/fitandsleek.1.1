@@ -1,0 +1,31 @@
+# --- Environment Files ---
+.env
+.env.*
+!.env.example
+
+# --- Language/Framework Artifacts ---
+node_modules/
+vendor/
+.venv/
+__pycache__/
+*.pyc
+
+# --- Build/Dist Output ---
+dist/
+build/
+.next/
+.turbo/
+.vercel/
+
+# --- OS/Editor Logs ---
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+*.log
+
+
+fitandsleekpro-2cc88317a04d.json
+fitandsleek-backend.env
+env_neon.txt
+.venv/
