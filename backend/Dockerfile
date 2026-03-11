@@ -39,9 +39,7 @@ EXPOSE 8000
 # ៨. យុទ្ធសាស្ត្រដោះស្រាយ Transaction Lock: ប្រើ Semicolon (;) ជំនួស && ក្នុង CMD
 # ការប្រើ ; ជួយឱ្យ Command បន្តដំណើរការទោះបីជាមាន Error តិចតួច និងជួយ Reset Connection
 CMD php artisan storage:link --force; \
-    php artisan db:wipe --force; \
     php artisan migrate --force --no-interaction; \
     php artisan config:cache; \
     php artisan route:cache; \
-    php artisan view:cache; \
     php artisan serve --host=0.0.0.0 --port=8000
