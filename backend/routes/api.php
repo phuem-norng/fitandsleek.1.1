@@ -344,3 +344,23 @@ Route::middleware(['auth:sanctum', 'device.bound', 'admin'])->prefix('admin')->g
         Route::put('/superadmin/payment-settings', [PaymentSettingsController::class, 'update']);
     });
 });
+// -------------------------
+// QDRANT DATA INDEXING (FORCE SYNC)
+// -------------------------
+Route::get('/qdrant/index-products', function () {
+    try {
+        // បញ្ជាឱ្យរត់ Command: php artisan qdrant:index-products
+        \Illuminate\Support\Facades\Artisan::call('qdrant:index-products');
+        
+        return response()->json([
+            'status' => 'success',
+            'message' => 'ការ Sync ផលិតផលទៅកាន់ Qdrant Cloud បានបញ្ចប់ដោយជោគជ័យ!',
+            'output' => \Illuminate\Support\Facades\Artisan::output()
+        ]);
+    } catch (\Exception $e) {
+        return response()->json([
+            'status' => 'error',
+            'message' => 'ការ Sync បរាជ័យ: ' . $e->getMessage()
+        ], 500);
+    }
+});
